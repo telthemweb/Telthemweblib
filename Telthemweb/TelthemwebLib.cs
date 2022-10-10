@@ -2,10 +2,10 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
-using Tel_DatabaseManger;
-using TelDatabaseManger.Helper;
 using Telthemweb.Database;
+using Telthemweb.Helpers;
 using Telthemweb.Services;
+using Telthemweb.TelUI;
 
 namespace Telthemweb
 {

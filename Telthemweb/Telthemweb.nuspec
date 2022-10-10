@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package >
   <metadata>
-    <id>$id$</id>
-    <version>$version$</version>
+    <id>Telthemweb</id>
+    <version>1.0.13</version>
     <title>Telthemweb</title>
     <authors>Innocent Tauzeni</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
     <!-- <icon>icon.png</icon> -->
     <projectUrl>https://innotauzeni.co.zw/</projectUrl>
-    <description>This will cater for database configuration and CRUD operation</description>
-    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
-    <copyright>$copyright$</copyright>
+    <description>Telthemweb is a simple, fast, and powerful open source Database Manager for .NET framework which allows developer to connect to many database providers like Mysql,Sql Server, Sqlite, Oracle,Postgres and Access Database.</description>
+    <releaseNotes>Release notes - Telthemweb - Version 1.0.13
+  6 issues were resolved in this release.
+  ** Name Conversion issue
+   We rename CLass Telthemweb  to TelthemwebLib.
+   Sorry for that
+   **Bugs
+   We fix Configuration form
+   -Remove Tel_DatabaseManager
+   -Fix Cancel Button - You Can close
+</releaseNotes>
+    <copyright>copyright (C) 2022</copyright>
     <tags>Telthemweb DatabaseManager</tags>
   </metadata>
 </package>

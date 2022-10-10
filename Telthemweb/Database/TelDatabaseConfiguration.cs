@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Configuration;
-using TelDatabaseManger.Helper;
+using Telthemweb.Helpers;
 
 namespace Telthemweb.Database
 {

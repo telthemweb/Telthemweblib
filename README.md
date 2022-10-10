@@ -32,6 +32,8 @@ $ git clone https://github.com/telthemweb/Telthemweblib.git
 
     telthem.telshowConfigurationForm(true) //true to trigger form
 
+    This form can also help to create database for you,automatically
+
  ```
 
  # Insert Record
@@ -141,9 +143,10 @@ $ git clone https://github.com/telthemweb/Telthemweblib.git
 
 # Contributing
 For any contribution please contact me or whatsapp me at +263 774 914 150
+or like Innocent Tauzeni Facebook Page
 
 # Special Thanks To
-1. To all your comments
+1. To you all for choosing our libray
 
 # Sponsorship
 If you love Telthemweb, you can really help us by sponsoring us.
@@ -153,6 +156,7 @@ If you love Telthemweb, you can really help us by sponsoring us.
 
 # app.config will have credentils like this
 
+ ```code
  <appSettings>
     <add key="databaseType" value="dNO2jZpR67E=" />
     <add key="databasename" value="nfF0dqAS3kU=" />
@@ -161,5 +165,6 @@ If you love Telthemweb, you can really help us by sponsoring us.
     <add key="serverusername" value="hVHZHhiShRg=" />
     <add key="serverpassword" value="MFsawtPUB1ZrvdMlioLrTw==" />
   </appSettings>
+ ```
 
   ALL Information will be encripted

@@ -195,18 +195,29 @@ namespace Telthemweb.TelUI
                 txtUsername.Enabled = false;
                 txtPassword.Enabled = false;
             }
+            else
+            {
+                txtServername.Enabled = true;
+                txtUsername.Enabled = true;
+                txtPassword.Enabled = true;
+            }
         }
 
         private void chkPortstatus_CheckedChanged(object sender, EventArgs e)
         {
             if (chkPortstatus.Checked)
             {
-                chkPortstatus.Enabled = true;
+                chkPortstatus.Enabled = false;
             }
             else
             {
-                chkPortstatus.Enabled = false;
+                chkPortstatus.Enabled = true;
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

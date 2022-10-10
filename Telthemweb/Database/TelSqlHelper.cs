@@ -1,12 +1,11 @@
 ﻿using System.Data;
-using TelDatabaseManger.Data;
 
 namespace Telthemweb.Database
 {
     public class TelSqlHelper
     {
         IDbConnection cn;
-        TelDatabaseConfigCL db = new TelDatabaseConfigCL();
+        TelDatabaseImplementation db = new TelDatabaseImplementation();
         public TelSqlHelper(string servertype, string connectionString)
         {
             cn = db.TestconnectDatabase(servertype, connectionString);

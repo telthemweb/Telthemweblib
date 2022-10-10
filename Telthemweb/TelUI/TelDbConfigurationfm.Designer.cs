@@ -72,7 +72,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(27, 7);
+            this.label1.Location = new System.Drawing.Point(20, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(362, 29);
             this.label1.TabIndex = 2;
@@ -126,6 +126,7 @@
             this.btnCancel.TabIndex = 15;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -298,7 +299,7 @@
             this.label9.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.label9.Location = new System.Drawing.Point(15, 394);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(150, 16);
+            this.label9.Size = new System.Drawing.Size(151, 16);
             this.label9.TabIndex = 17;
             this.label9.Text = "Powered by Telthemweb";
             // 

@@ -1,7 +1,6 @@
 ﻿using System.Configuration;
 using System;
 using System.Data;
-using TelDatabaseManger.Helper;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using Npgsql;
@@ -9,6 +8,7 @@ using Oracle.ManagedDataAccess.Client;
 using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Data.SQLite;
+using Telthemweb.Helpers;
 
 namespace Telthemweb.Database
 {
