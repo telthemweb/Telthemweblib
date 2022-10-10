@@ -1,0 +1,390 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite</name>
+    </assembly>
+    <members>
+        <member name="T:Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.Internal.INpgsqlNetTopologySuiteOptions">
+            <summary>
+            Represents options for Npgsql NetTopologySuite that can only be set at the <see cref="T:System.IServiceProvider"/> singleton level.
+            </summary>
+        </member>
+        <member name="P:Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.Internal.INpgsqlNetTopologySuiteOptions.IsGeographyDefault">
+            <summary>
+            True if geography is to be used by default instead of geometry
+            </summary>
+        </member>
+        <member name="T:Npgsql.EntityFrameworkCore.PostgreSQL.Internal.NpgsqlNetTopologySuiteOptions">
+            <inheritdoc />
+        </member>
+        <member name="P:Npgsql.EntityFrameworkCore.PostgreSQL.Internal.NpgsqlNetTopologySuiteOptions.IsGeographyDefault">
+            <inheritdoc />
+        </member>
+        <member name="M:Npgsql.EntityFrameworkCore.PostgreSQL.Internal.NpgsqlNetTopologySuiteOptions.Initialize(Microsoft.EntityFrameworkCore.Infrastructure.IDbContextOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Npgsql.EntityFrameworkCore.PostgreSQL.Internal.NpgsqlNetTopologySuiteOptions.Validate(Microsoft.EntityFrameworkCore.Infrastructure.IDbContextOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:Npgsql.EntityFrameworkCore.PostgreSQL.Query.ExpressionTranslators.Internal.NpgsqlGeometryMethodTranslator">
+            <summary>
+            Translates methods operating on types implementing the <see cref="!:IGeometry"/> interface.
+            </summary>
+        </member>
+        <member name="M:Npgsql.EntityFrameworkCore.PostgreSQL.Query.ExpressionTranslators.Internal.NpgsqlGeometryMethodTranslator.Translate(Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression,System.Reflection.MethodInfo,System.Collections.Generic.IReadOnlyList{Microsoft.EntityFrameworkCore.Query.SqlExpressions.SqlExpression},Microsoft.EntityFrameworkCore.Diagnostics.IDiagnosticsLogger{Microsoft.EntityFrameworkCore.DbLoggerCategory.Query})">
+            <inheritdoc />
+        </member>
+        <member name="P:Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlGeometryTypeMapping`1.NpgsqlDbType">
+            <inheritdoc />
+        </member>
+        <member name="M:Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlNetTopologySuiteTypeMappingSourcePlugin.TryParseStoreTypeName(System.String,System.String@,System.Boolean@,System.Type@,System.Int32@,NetTopologySuite.Geometries.Ordinates@)">
+            <summary>
+            Given a PostGIS store type name (e.g. GEOMETRY, GEOGRAPHY(Point, 4326), GEOMETRY(LineStringM, 4326)),
+            attempts to parse it and return its components.
+            </summary>
+        </member>
+        <member name="T:Microsoft.EntityFrameworkCore.NpgsqlNetTopologySuiteDbContextOptionsBuilderExtensions">
+            <summary>
+            NetTopologySuite specific extension methods for <see cref="T:Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.NpgsqlDbContextOptionsBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.EntityFrameworkCore.NpgsqlNetTopologySuiteDbContextOptionsBuilderExtensions.UseNetTopologySuite(Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure.NpgsqlDbContextOptionsBuilder,NetTopologySuite.Geometries.CoordinateSequenceFactory,NetTopologySuite.Geometries.PrecisionModel,NetTopologySuite.Geometries.Ordinates,System.Boolean)">
+            <summary>
+            Use NetTopologySuite to access SQL Server spatial data.
+            </summary>
+            <returns>
+            The options builder so that further configuration can be chained.
+            </returns>
+        </member>
+        <member name="M:Microsoft.EntityFrameworkCore.NpgsqlNetTopologySuiteDbFunctionsExtensions.Transform``1(Microsoft.EntityFrameworkCore.DbFunctions,``0,System.Int32)">
+            <summary>
+            Returns a new geometry with its coordinates transformed to a different spatial reference system.
+            Translates to <c>ST_Transform(geometry, srid)</c>.
+            </summary>
+            <remarks>
+            See https://postgis.net/docs/ST_Transform.html.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.EntityFrameworkCore.NpgsqlNetTopologySuiteDbFunctionsExtensions.Force2D``1(Microsoft.EntityFrameworkCore.DbFunctions,``0)">
+            <summary>
+            Forces the geometries into a "2-dimensional mode" so that all output representations will only have the X and Y coordinates.
+            Translates to <c>ST_Force2D(geometry)</c>
+            </summary>
+            <remarks>
+            See https://postgis.net/docs/ST_Force2D.html.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.EntityFrameworkCore.NpgsqlNetTopologySuiteDbFunctionsExtensions.IsWithinDistance(Microsoft.EntityFrameworkCore.DbFunctions,NetTopologySuite.Geometries.Geometry,NetTopologySuite.Geometries.Geometry,System.Double,System.Boolean)">
+            <summary>
+            Tests whether the distance from the origin geometry to another is less than or equal to a specified value.
+            Translates to <c>ST_DWithin</c>.
+            </summary>
+            <remarks>
+            See https://postgis.net/docs/ST_DWithin.html.
+            </remarks>
+            <param name="geometry">The origin geometry.</param>
+            <param name="anotherGeometry">The geometry to check the distance to.</param>
+            <param name="distance">The distance value to compare.</param>
+            <param name="useSpheroid">Whether to use sphere or spheroid distance measurement.</param>
+            <returns><see langword="true" /> if the geometries are less than distance apart.</returns>
+        </member>
+        <member name="M:Microsoft.EntityFrameworkCore.NpgsqlNetTopologySuiteDbFunctionsExtensions.Distance(Microsoft.EntityFrameworkCore.DbFunctions,NetTopologySuite.Geometries.Geometry,NetTopologySuite.Geometries.Geometry,System.Boolean)">
+            <summary>
+            Returns the minimum distance between the origin geometry and another geometry g.
+            Translates to <c>ST_Distance</c>.
+            </summary>
+            <remarks>
+            See https://postgis.net/docs/ST_Distance.html.
+            </remarks>
+            <param name="geometry">The origin geometry.</param>
+            <param name="anotherGeometry">The geometry from which to compute the distance.</param>
+            <param name="useSpheroid">Whether to use sphere or spheroid distance measurement.</param>
+            <returns>The distance between the geometries.</returns>
+        </member>
+        <member name="M:Microsoft.EntityFrameworkCore.NpgsqlNetTopologySuiteDbFunctionsExtensions.DistanceKnn(Microsoft.EntityFrameworkCore.DbFunctions,NetTopologySuite.Geometries.Geometry,NetTopologySuite.Geometries.Geometry)">
+            <summary>
+            Returns the 2D distance between two geometries. Used in the "ORDER BY" clause, provides index-assisted nearest-neighbor result
+            sets. Translates to <c>&lt;-&gt;</c>.
+            </summary>
+            <remarks>
+            See https://postgis.net/docs/ST_Distance.html.
+            </remarks>
+            <param name="geometry">The origin geometry.</param>
+            <param name="anotherGeometry">The geometry from which to compute the distance.</param>
+            <returns>The 2D distance between the geometries.</returns>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.NpgsqlNetTopologySuiteServiceCollectionExtensions">
+            <summary>
+            Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite extension methods for <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" />.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.NpgsqlNetTopologySuiteServiceCollectionExtensions.AddEntityFrameworkNpgsqlNetTopologySuite(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds the services required for NetTopologySuite support in the Npgsql provider for Entity Framework.
+            </summary>
+            <param name="serviceCollection">The <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" /> to add services to.</param>
+            <returns>The same service collection so that multiple calls can be chained.</returns>
+        </member>
+        <member name="T:JetBrains.Annotations.StringFormatMethodAttribute">
+             <summary>
+             Indicates that the marked method builds string by the format pattern and (optional) arguments.
+             The parameter, which contains the format string, should be given in constructor. The format string
+             should be in <see cref="M:System.String.Format(System.IFormatProvider,System.String,System.Object[])"/>-like form.
+             </summary>
+             <example><code>
+             [StringFormatMethod("message")]
+             void ShowError(string message, params object[] args) { /* do something */ }
+            
+             void Foo() {
+               ShowError("Failed: {0}"); // Warning: Non-existing argument in format string
+             }
+             </code></example>
+        </member>
+        <member name="M:JetBrains.Annotations.StringFormatMethodAttribute.#ctor(System.String)">
+            <param name="formatParameterName">
+            Specifies which parameter of an annotated method should be treated as the format string
+            </param>
+        </member>
+        <member name="T:JetBrains.Annotations.ValueProviderAttribute">
+             <summary>
+             Use this annotation to specify a type that contains static or const fields
+             with values for the annotated property/field/parameter.
+             The specified type will be used to improve completion suggestions.
+             </summary>
+             <example><code>
+             namespace TestNamespace
+             {
+               public class Constants
+               {
+                 public static int INT_CONST = 1;
+                 public const string STRING_CONST = "1";
+               }
+            
+               public class Class1
+               {
+                 [ValueProvider("TestNamespace.Constants")] public int myField;
+                 public void Foo([ValueProvider("TestNamespace.Constants")] string str) { }
+            
+                 public void Test()
+                 {
+                   Foo(/*try completion here*/);//
+                   myField = /*try completion here*/
+                 }
+               }
+             }
+             </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.ValueRangeAttribute">
+            <summary>
+            Indicates that the integral value falls into the specified interval.
+            It's allowed to specify multiple non-intersecting intervals.
+            Values of interval boundaries are inclusive.
+            </summary>
+            <example><code>
+            void Foo([ValueRange(0, 100)] int value) {
+              if (value == -1) { // Warning: Expression is always 'false'
+                ...
+              }
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.NonNegativeValueAttribute">
+            <summary>
+            Indicates that the integral value never falls below zero.
+            </summary>
+            <example><code>
+            void Foo([NonNegativeValue] int value) {
+              if (value == -1) { // Warning: Expression is always 'false'
+                ...
+              }
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.InvokerParameterNameAttribute">
+            <summary>
+            Indicates that the function argument should be a string literal and match one
+            of the parameters of the caller function. For example, ReSharper annotates
+            the parameter of <see cref="T:System.ArgumentNullException"/>.
+            </summary>
+            <example><code>
+            void Foo(string param) {
+              if (param is null)
+                throw new ArgumentNullException("par"); // Warning: Cannot resolve symbol
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.ContractAnnotationAttribute">
+            <summary>
+            Describes dependency between method input and output.
+            </summary>
+            <syntax>
+            <p>Function Definition Table syntax:</p>
+            <list>
+            <item>FDT      ::= FDTRow [;FDTRow]*</item>
+            <item>FDTRow   ::= Input =&gt; Output | Output &lt;= Input</item>
+            <item>Input    ::= ParameterName: Value [, Input]*</item>
+            <item>Output   ::= [ParameterName: Value]* {halt|stop|void|nothing|Value}</item>
+            <item>Value    ::= true | false | null | notnull | canbenull</item>
+            </list>
+            If the method has a single input parameter, its name could be omitted.<br/>
+            Using <c>halt</c> (or <c>void</c>/<c>nothing</c>, which is the same) for the method output
+            means that the method doesn't return normally (throws or terminates the process).<br/>
+            Value <c>canbenull</c> is only applicable for output parameters.<br/>
+            You can use multiple <c>[ContractAnnotation]</c> for each FDT row, or use single attribute
+            with rows separated by semicolon. There is no notion of order rows, all rows are checked
+            for applicability and applied per each program state tracked by the analysis engine.<br/>
+            </syntax>
+            <examples><list>
+            <item><code>
+            [ContractAnnotation("=&gt; halt")]
+            public void TerminationMethod()
+            </code></item>
+            <item><code>
+            [ContractAnnotation("null &lt;= param:null")] // reverse condition syntax
+            public string GetName(string surname)
+            </code></item>
+            <item><code>
+            [ContractAnnotation("s:null =&gt; true")]
+            public bool IsNullOrEmpty(string s) // string.IsNullOrEmpty()
+            </code></item>
+            <item><code>
+            // A method that returns null if the parameter is null,
+            // and not null if the parameter is not null
+            [ContractAnnotation("null =&gt; null; notnull =&gt; notnull")]
+            public object Transform(object data)
+            </code></item>
+            <item><code>
+            [ContractAnnotation("=&gt; true, result: notnull; =&gt; false, result: null")]
+            public bool TryParse(string s, out Person result)
+            </code></item>
+            </list></examples>
+        </member>
+        <member name="T:JetBrains.Annotations.LocalizationRequiredAttribute">
+            <summary>
+            Indicates whether the marked element should be localized.
+            </summary>
+            <example><code>
+            [LocalizationRequiredAttribute(true)]
+            class Foo {
+              string str = "my string"; // Warning: Localizable string
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.CannotApplyEqualityOperatorAttribute">
+             <summary>
+             Indicates that the value of the marked type (or its derivatives)
+             cannot be compared using '==' or '!=' operators and <c>Equals()</c>
+             should be used instead. However, using '==' or '!=' for comparison
+             with <c>null</c> is always permitted.
+             </summary>
+             <example><code>
+             [CannotApplyEqualityOperator]
+             class NoEquality { }
+            
+             class UsesNoEquality {
+               void Test() {
+                 var ca1 = new NoEquality();
+                 var ca2 = new NoEquality();
+                 if (ca1 is not null) { // OK
+                   bool condition = ca1 == ca2; // Warning
+                 }
+               }
+             }
+             </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.BaseTypeRequiredAttribute">
+             <summary>
+             When applied to a target attribute, specifies a requirement for any type marked
+             with the target attribute to implement or inherit specific type or types.
+             </summary>
+             <example><code>
+             [BaseTypeRequired(typeof(IComponent)] // Specify requirement
+             class ComponentAttribute : Attribute { }
+            
+             [Component] // ComponentAttribute requires implementing IComponent interface
+             class MyComponent : IComponent { }
+             </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.UsedImplicitlyAttribute">
+            <summary>
+            Indicates that the marked symbol is used implicitly (e.g. via reflection, in external library),
+            so this symbol will not be reported as unused (as well as by other usage inspections).
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.MeansImplicitUseAttribute">
+            <summary>
+            Can be applied to attributes, type parameters, and parameters of a type assignable from <see cref="T:System.Type"/> .
+            When applied to an attribute, the decorated attribute behaves the same as <see cref="T:JetBrains.Annotations.UsedImplicitlyAttribute"/>.
+            When applied to a type parameter or to a parameter of type <see cref="T:System.Type"/>,  indicates that the corresponding type
+            is used implicitly.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.ImplicitUseKindFlags">
+            <summary>
+            Specify the details of implicitly used symbol when it is marked
+            with <see cref="T:JetBrains.Annotations.MeansImplicitUseAttribute"/> or <see cref="T:JetBrains.Annotations.UsedImplicitlyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseKindFlags.Access">
+            <summary>Only entity marked with attribute considered used.</summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseKindFlags.Assign">
+            <summary>Indicates implicit assignment to a member.</summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseKindFlags.InstantiatedWithFixedConstructorSignature">
+            <summary>
+            Indicates implicit instantiation of a type with fixed constructor signature.
+            That means any unused constructor parameters won't be reported as such.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseKindFlags.InstantiatedNoFixedConstructorSignature">
+            <summary>Indicates implicit instantiation of a type.</summary>
+        </member>
+        <member name="T:JetBrains.Annotations.ImplicitUseTargetFlags">
+            <summary>
+            Specify what is considered to be used implicitly when marked
+            with <see cref="T:JetBrains.Annotations.MeansImplicitUseAttribute"/> or <see cref="T:JetBrains.Annotations.UsedImplicitlyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseTargetFlags.Members">
+            <summary>Members of entity marked with attribute are considered used.</summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseTargetFlags.WithInheritors">
+            <summary> Inherited entities are considered used. </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseTargetFlags.WithMembers">
+            <summary>Entity marked with attribute and all its members considered used.</summary>
+        </member>
+        <member name="T:JetBrains.Annotations.NoEnumerationAttribute">
+             <summary>
+             Indicates that IEnumerable passed as a parameter is not enumerated.
+             Use this annotation to suppress the 'Possible multiple enumeration of IEnumerable' inspection.
+             </summary>
+             <example><code>
+             static void ThrowIfNull&lt;T&gt;([NoEnumeration] T v, string n) where T : class
+             {
+               // custom check for null but no enumeration
+             }
+            
+             void Foo(IEnumerable&lt;string&gt; values)
+             {
+               ThrowIfNull(values, nameof(values));
+               var x = values.ToList(); // No warnings about multiple enumeration
+             }
+             </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.RegexPatternAttribute">
+            <summary>
+            Indicates that the marked parameter is a regular expression pattern.
+            </summary>
+        </member>
+        <member name="M:System.SharedTypeExtensions.DisplayName(System.Type,System.Boolean)">
+            <summary>
+                This is an internal API that supports the Entity Framework Core infrastructure and not subject to
+                the same compatibility standards as public APIs. It may be changed or removed without notice in
+                any release. You should only use it directly in your code with extreme caution and knowing that
+                doing so can result in application failures when updating to a new Entity Framework Core release.
+            </summary>
+        </member>
+    </members>
+</doc>
